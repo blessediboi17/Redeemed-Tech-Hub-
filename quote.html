@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Quote | Blessed Studios</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">BLESSED STUDIOS</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="academy.html">Academy</a>
+                <a href="quote.html" class="nav-btn-sm">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mobile-container" style="margin-top: 20px;">
+        <section class="glass-card quote-section">
+            <h2 class="section-title text-center">Tell Us What You're Building</h2>
+            <p class="text-center" style="color: var(--text-muted); margin-bottom: 20px; font-size: 13px;">Fill out the form below to get a project estimate and proposal.</p>
+            
+            <form id="projectRequestForm" class="request-form">
+                <div class="input-group">
+                    <label for="client_name">Full Name / Organization</label>
+                    <input type="text" id="client_name" name="client_name" placeholder="Name or Organization Name" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">Contact Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email for the proposal" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="phone">WhatsApp Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="For quick follow-up" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="project_type">What are you building?</label>
+                    <select id="project_type" name="project_type" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Business Website">Business Website</option>
+                        <option value="School Portal">School Portal</option>
+                        <option value="Church Portal">Church Portal</option>
+                        <option value="NGO Website">NGO Website</option>
+                        <option value="Personal Portfolio">Personal Portfolio</option>
+                        <option value="E-commerce Website">E-commerce Website</option>
+                        <option value="Custom Web App">Custom Web Application</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="budget_range">Your Estimated Budget (USD)</label>
+                    <select id="budget_range" name="budget_range" required>
+                        <option value="" disabled selected>Select range</option>
+                        <option value="Under $100">Under $100</option>
+                        <option value="$100 - $250">$100 - $250</option>
+                        <option value="$250 - $500">$250 - $500</option>
+                        <option value="$500 - $1,000">$500 - $1,000</option>
+                        <option value="$1,000+">$1,000+</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="project_description">Project Description</label>
+                    <textarea id="project_description" name="project_description" placeholder="Briefly describe key features or goals..." rows="4"></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn btn-gold btn-full">Submit Request</button>
+            </form>
+            
+            <div id="successMessage" class="status-msg success hidden">
+                <p>✅ Success! Your request was received. We will follow up via email or WhatsApp soon.</p>
+            </div>
+            <div id="errorMessage" class="status-msg error hidden">
+                <p>❌ Submission failed. Please try again or contact us directly.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'dfspcyhkrubnblfjsdpr';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmc3BjeWhrcnVibmJsZmpzZHByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2Njg1OTEsImV4cCI6MjEwMzI0NDU5MX0.IdvYVrKdZdmPEseyOuFArPugEU2t78JawO1SZR9RqdU';
+        const supabase = window.supabase.createClient(dfspcyhkrubnblfjsdpr, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmc3BjeWhrcnVibmJsZmpzZHByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2Njg1OTEsImV4cCI6MjEwMzI0NDU5MX0.IdvYVrKdZdmPEseyOuFArPugEU2t78JawO1SZR9RqdU);
+
+        const form = document.getElementById('projectRequestForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('successMessage');
+        const errorMsg = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); 
+            submitBtn.innerText = "Submitting...";
+            submitBtn.disabled = true;
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            const formData = {
+                client_name: document.getElementById('client_name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                project_type: document.getElementById('project_type').value,
+                budget_range: document.getElementById('budget_range').value,
+                project_description: document.getElementById('project_description').value,
+                status: 'New'
+            };
+
+            const { data, error } = await supabase.from('project_requests').insert([formData]);
+
+            submitBtn.innerText = "Submit Request";
+            submitBtn.disabled = false;
+
+            if (error) {
+                errorMsg.classList.remove('hidden');
+            } else {
+                successMsg.classList.remove('hidden');
+                form.reset();
+            }
+        });
+    </script>
+</body>
+                          </html>
