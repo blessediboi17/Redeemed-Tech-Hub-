@@ -3,204 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redeemed Tech Hub| Digital Solutions & Academy</title>
-    
-    <!-- Link to the CSS styling file -->
+    <title>Blessed Studios | Digital Solutions</title>
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Include the Supabase JavaScript Library from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <!-- Main Landing Container -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">BLESSED STUDIOS</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="academy.html">Academy</a>
+                <a href="quote.html" class="nav-btn-sm">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mobile-container">
-        
-        <!-- Header/Avatar Section -->
         <header class="hero-section text-center">
             <div class="avatar-ring">
-                <!-- Replace with your actual photo URL later -->
                 <img src="https://i.ibb.co/3s6ZfXv/output.jpg" alt="Blessed Iboi" class="avatar-img">
             </div>
             <p class="branding-subtitle">Build. Learn. Grow.</p>
             <h1 class="main-title">Blessed Fredrick Iboi</h1>
             <p class="tagline">Providing professional websites, digital solutions, and practical technology training for organizations and individuals in Liberia.</p>
             
-            <!-- Trust Rating Box -->
             <div class="rating-box">
                 <span class="stars">★★★★★</span>
                 <span class="rating-text">Top Rated Digital Hub</span>
             </div>
         </header>
 
-        <!-- Main Services Grid -->
         <section class="services-grid">
-            <div class="glass-card service-card">
+            <div class="glass-card service-card text-center">
                 <h3>Digital Solutions</h3>
-                <p>Web development, school portals, church systems, and custom web apps tailored to your organization.</p>
-                <a href="#quote" class="btn btn-gold">Request website</a>
+                <p>Custom web development, school portals, church systems, and web applications tailored to your business.</p>
+                <a href="quote.html" class="btn btn-gold btn-full">Request a Website</a>
             </div>
-            <div class="glass-card service-card">
+            <div class="glass-card service-card text-center">
                 <h3>Digital Academy</h3>
-                <p>Practical online and physical classes covering AI tools, web design, graphic design, and productivity.</p>
-                <a href="#academy" class="btn btn-outline">Explore Courses</a>
+                <p>Practical online and physical classes covering AI workflows, web design, graphic design, and tech skills.</p>
+                <a href="academy.html" class="btn btn-outline btn-full">Explore Courses</a>
             </div>
         </section>
-
-        <!-- Quotation Form Section (The MVP Core) -->
-        <section id="quote" class="glass-card quote-section">
-            <h2 class="section-title text-center">Tell Us What You're Building</h2>
-            
-            <form id="projectRequestForm" class="request-form">
-                
-                <div class="input-group">
-                    <label for="client_name">Full Name / Organization</label>
-                    <input type="text" id="client_name" name="client_name" placeholder="Name or Organization Name" required>
-                </div>
-                
-                <div class="input-group">
-                    <label for="email">Contact Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email for the proposal" required>
-                </div>
-                
-                <div class="input-group">
-                    <label for="phone">WhatsApp Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="For quick follow-up" required>
-                </div>
-                
-                <div class="input-group">
-                    <label for="project_type">What are you building?</label>
-                    <select id="project_type" name="project_type" required>
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="Business Website">Business Website</option>
-                        <option value="School Portal">School Portal</option>
-                        <option value="Church Portal">Church Portal</option>
-                        <option value="NGO Website">NGO Website</option>
-                        <option value="Personal Portfolio">Personal Portfolio</option>
-                        <option value="E-commerce Website">E-commerce Website</option>
-                        <option value="Custom Web App">Custom Web Application</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label for="budget_range">Your Estimated Budget (USD)</label>
-                    <select id="budget_range" name="budget_range" required>
-                        <option value="" disabled selected>Select range</option>
-                        <option value="Under $100">Under $100</option>
-                        <option value="$100 - $250">$100 - $250</option>
-                        <option value="$250 - $500">$250 - $500</option>
-                        <option value="$500 - $1,000">$500 - $1,000</option>
-                        <option value="$1,000+">$1,000+</option>
-                    </select>
-                </div>
-                
-                <div class="input-group">
-                    <label for="project_description">Project Description</label>
-                    <textarea id="project_description" name="project_description" placeholder="Briefly describe key features or goals... (Optional)" rows="4"></textarea>
-                </div>
-
-                <button type="submit" id="submitBtn" class="btn btn-gold btn-full">Submit Request</button>
-            </form>
-            
-            <!-- Hidden Status Messages -->
-            <div id="successMessage" class="status-msg success hidden">
-                <p>✅ Success! Your request was received. Check your email or WhatsApp soon for follow-up.</p>
-            </div>
-            <div id="errorMessage" class="status-msg error hidden">
-                <p>❌ Submission failed. Please try again or contact us directly.</p>
-            </div>
-        </section>
-
-        <!-- Digital Academy Courses Section -->
-        <section id="academy" class="glass-card" style="margin-top: 30px;">
-            <h2 class="section-title text-center">Blessed Studios Academy</h2>
-            <p class="text-center" style="color: var(--text-muted); margin-bottom: 25px; font-size: 14px;">
-                Practical, hands-on digital skills designed to help you build real projects.
-            </p>
-
-            <div class="services-grid">
-                <!-- Course 1 -->
-                <div style="background: rgba(2, 4, 10, 0.5); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px;">
-                    <span style="font-size: 11px; color: var(--accent-cyan); font-weight: bold; text-transform: uppercase;">Practical Training</span>
-                    <h4 style="font-size: 18px; font-weight: 700; margin: 5px 0 10px 0;">Mobile-First Web Development</h4>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">
-                        Learn HTML5, CSS3, Tailwind CSS, and GitHub deployment directly from your phone or PC.
-                    </p>
-                    <a href="https://wa.me/231-777-002-416?text=I%20want%20to%20enroll%20in%20Web%20Development" target="_blank" class="btn btn-outline btn-full">Enroll via WhatsApp</a>
-                </div>
-
-                <!-- Course 2 -->
-                <div style="background: rgba(2, 4, 10, 0.5); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px;">
-                    <span style="font-size: 11px; color: var(--gold-main); font-weight: bold; text-transform: uppercase;">Masterclass</span>
-                    <h4 style="font-size: 18px; font-weight: 700; margin: 5px 0 10px 0;">AI Content & Tools Workflows</h4>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">
-                        Master AI prompts, voiceover generation, graphic design, and automated digital content creation.
-                    </p>
-                    <a href="https://wa.me/231XXXXXXXXX?text=I%20want%20to%20enroll%20in%20AI%20Workflows" target="_blank" class="btn btn-gold btn-full">Enroll via WhatsApp</a>
-                </div>
-            </div>
-        </section>
-
-    </div> <!-- End main container -->
+    </div>
 
     <footer class="main-footer text-center">
         <p>&copy; 2026 BLESSED STUDIOS | MONROVIA</p>
     </footer>
-
-    <!-- INTERACTIVE LOGIC (JavaScript) -->
-    <script>
-        // 1. YOUR CONNECTION: Change these to your actual Supabase credentials!
-        const SUPABASE_URL = 'dfspcyhkrubnblfjsdpr'; // e.g., https://xyz.supabase.co
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmc3BjeWhrcnVibmJsZmpzZHByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2Njg1OTEsImV4cCI6MjEwMzI0NDU5MX0.IdvYVrKdZdmPEseyOuFArPugEU2t78JawO1SZR9RqdU';
-
-        // Initialize connection
-        const supabase = window.supabase.createClient(dfspcyhkrubnblfjsdpr, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmc3BjeWhrcnVibmJsZmpzZHByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2Njg1OTEsImV4cCI6MjEwMzI0NDU5MX0.IdvYVrKdZdmPEseyOuFArPugEU2t78JawO1SZR9RqdU);
-
-        // 2. FORM SUBMISSION LOGIC
-        const form = document.getElementById('projectRequestForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const successMsg = document.getElementById('successMessage');
-        const errorMsg = document.getElementById('errorMessage');
-
-        form.addEventListener('submit', async function(event) {
-            // Stop page refresh
-            event.preventDefault(); 
-            
-            // Visual feedback
-            submitBtn.innerText = "Submitting...";
-            submitBtn.disabled = true;
-            successMsg.classList.add('hidden');
-            errorMsg.classList.add('hidden');
-
-            // Collect form data into a neat object
-            const formData = {
-                client_name: document.getElementById('client_name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                project_type: document.getElementById('project_type').value,
-                budget_range: document.getElementById('budget_range').value,
-                project_description: document.getElementById('project_description').value,
-                status: 'New' // Sets the default status for your pipeline
-            };
-
-            // INSERT DIRECTLY INTO SUPABASE TABLE named 'project_requests'
-            const { data, error } = await supabase
-                .from('project_requests')
-                .insert([formData]);
-
-            // Clear feedback state
-            submitBtn.innerText = "Submit Request";
-            submitBtn.disabled = false;
-
-            if (error) {
-                console.error("Supabase submission error:", error);
-                errorMsg.classList.remove('hidden'); // Show error box
-            } else {
-                console.log("Submission success:", data);
-                successMsg.classList.remove('hidden'); // Show success box
-                form.reset(); // Clear the form fields
-            }
-        });
-    </script>
 </body>
-                  </html>
+</html>
